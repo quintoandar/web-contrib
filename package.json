@@ -1,0 +1,349 @@
+{
+  "name": "web-contrib",
+  "version": "1.0.0",
+  "description": "Extensions for dependencies of Web Projects (PWA)",
+  "main": "./lib/index.js",
+  "jsnext:main": "src/index.js",
+  "directories": {
+    "lib": "./lib"
+  },
+  "scripts": {
+    "prebuild": "npm run build:clean",
+    "build:clean": "rimraf ./lib",
+    "build": "NODE_ENV=production babel src --out-dir lib -s --ignore test.js",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint src/**",
+    "lint:fix": "eslint src/** --fix",
+    "test": "NODE_ENV=test jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quintoandar/web-contrib.git"
+  },
+  "keywords": [
+    "contrib",
+    "react",
+    "redux",
+    "PWA"
+  ],
+  "author": "Quinto Andar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quintoandar/web-contrib/issues"
+  },
+  "homepage": "https://github.com/quintoandar/web-contrib#readme",
+  "babel": {
+    "plugins": [
+      [
+        "babel-plugin-module-resolver",
+        {
+          "root": [
+            "./src"
+          ]
+        }
+      ],
+      "transform-react-inline-elements",
+      "dynamic-import-node"
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "> 0.5% in BR",
+              "iOS >= 9.3"
+            ]
+          },
+          "useBuiltIns": "entry"
+        }
+      ],
+      "react",
+      "stage-0"
+    ],
+    "env": {
+      "production": {
+        "only": [
+          "src"
+        ]
+      },
+      "development": {
+        "plugins": []
+      },
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "dynamic-import-node"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "node": true,
+      "jest": true,
+      "es6": true
+    },
+    "plugins": [
+      "react",
+      "jsx-a11y"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "import/extensions": [
+        2,
+        {
+          "js": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      "import/imports-first": 0,
+      "import/newline-after-import": 0,
+      "import/no-dynamic-require": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-named-as-default": 0,
+      "import/no-unresolved": 2,
+      "import/prefer-default-export": 0,
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "jsx-a11y/aria-props": 2,
+      "jsx-a11y/heading-has-content": 0,
+      "jsx-a11y/href-no-hash": 2,
+      "jsx-a11y/label-has-for": 2,
+      "jsx-a11y/mouse-events-have-key-events": 2,
+      "jsx-a11y/role-has-required-aria-props": 2,
+      "jsx-a11y/role-supports-aria-props": 2,
+      "max-len": [
+        2,
+        120,
+        2,
+        {
+          "ignoreUrls": true
+        }
+      ],
+      "max-lines": [
+        "error",
+        {
+          "max": 300,
+          "skipComments": true
+        }
+      ],
+      "newline-per-chained-call": 0,
+      "no-confusing-arrow": 0,
+      "no-console": 1,
+      "no-use-before-define": 0,
+      "prefer-template": 2,
+      "class-methods-use-this": 0,
+      "react/forbid-prop-types": 0,
+      "react/jsx-first-prop-new-line": [
+        2,
+        "multiline"
+      ],
+      "react/jsx-filename-extension": 0,
+      "react/jsx-no-target-blank": 0,
+      "react/require-extension": 0,
+      "react/self-closing-comp": 0,
+      "require-yield": 0,
+      "import/no-webpack-loader-syntax": 0,
+      "react/jsx-no-bind": 2
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": [
+            "src",
+            "node_modules"
+          ]
+        }
+      }
+    }
+  },
+  "tslint": {
+    "defaultSeverity": "error",
+    "extends": [
+      "tslint:recommended",
+      "tslint-react"
+    ],
+    "rules": {
+      "eofline": true,
+      "indent": [
+        true,
+        "spaces",
+        2
+      ],
+      "quotemark": [
+        true,
+        "single",
+        "jsx-double",
+        "avoid-template",
+        "avoid-escape"
+      ],
+      "newline-before-return": true,
+      "no-consecutive-blank-lines": true,
+      "no-irregular-whitespace": true,
+      "only-arrow-functions": [
+        true
+      ],
+      "no-unused-expression": true,
+      "no-unused-variable": true,
+      "no-unnecessary-callback-wrapper": true,
+      "no-unnecessary-initializer": true,
+      "object-literal-shorthand": true,
+      "object-literal-sort-keys": false,
+      "prefer-function-over-method": true,
+      "semicolon": [
+        true,
+        "always"
+      ],
+      "trailing-comma": [
+        true,
+        {
+          "multiline": "always",
+          "singleline": "never"
+        }
+      ],
+      "prefer-const": true,
+      "linebreak-style": [
+        true,
+        "LF"
+      ],
+      "cyclomatic-complexity": [
+        true,
+        10
+      ],
+      "arrow-return-shorthand": [
+        true,
+        "multiline"
+      ],
+      "max-line-length": [
+        true,
+        120
+      ],
+      "max-file-line-count": [
+        true,
+        150
+      ],
+      "max-classes-per-file": [
+        true,
+        1
+      ],
+      "no-duplicate-imports": true,
+      "jsx-alignment": true,
+      "jsx-boolean-value": [
+        true,
+        "never"
+      ],
+      "jsx-curly-spacing": [
+        true,
+        "never"
+      ],
+      "jsx-equals-spacing": [
+        true,
+        "never"
+      ],
+      "jsx-key": true,
+      "jsx-no-bind": true,
+      "jsx-self-close": true,
+      "jsx-wrap-multiline": true
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 96,
+        "lines": 97,
+        "statements": 96
+      }
+    },
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
+    "mapCoverage": true,
+    "moduleDirectories": [
+      "src",
+      "node_modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "testRegex": "tests/.*\\.test\\.(js|tsx?)$",
+    "transform": {
+      ".(js|jsx)": "babel-jest",
+      ".(ts|tsx)": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!block-party|mission-control|godfather)"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-config-airbnb-base": "10.0.1",
+    "eslint-import-resolver-webpack": "0.8.3",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.7.1",
+    "jest": "^22.1.4",
+    "react": "^15.6.2",
+    "ts-jest": "^22.0.1",
+    "typescript": "^2.6.2"
+  },
+  "peerDependencies": {
+    "react": "^15.6.2"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.4",
+    "lodash": "^4.17.4",
+    "redux-immutable": "^4.0.0",
+    "react-router-redux": "^4.0.6",
+    "react-router": "^3.0.5",
+    "redux": "3.6.0"
+  }
+}
