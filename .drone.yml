@@ -9,7 +9,7 @@ pipeline:
     group: build
     image: node:8.9.4
     commands:
-      - npm run test:nocache --unsafe-perm --quiet
+      - npm run test --unsafe-perm --quiet
 
   lint:
     group: build

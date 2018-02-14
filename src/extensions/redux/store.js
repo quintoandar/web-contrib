@@ -1,7 +1,3 @@
-/**
- * Create the store with asynchronously loaded reducers
- */
-
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import createReducer from './reducers';
@@ -23,15 +19,15 @@ export default function configureStore(
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
   /* eslint-enable */
 
-  // Extensions
-  store.asyncReducers = {}; // Async reducer registry
-  store.asyncFirestoreListeners = {}; // Async firestore listeners registry
-
   const store = createStore(
-    createReducer(store.asyncReducers),
+    createReducer(),
     fromJS(initialState),
     composeEnhancers(...enhancers)
   );
+
+  // Extensions
+  store.asyncReducers = {}; // Async reducer registry
+  store.asyncFirestoreListeners = {}; // Async firestore listeners registry
 
   // Make asyncReducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */

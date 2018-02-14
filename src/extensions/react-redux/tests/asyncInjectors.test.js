@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { memoryHistory } from 'react-router';
-import configureStore from 'web-contrib/redux/store';
+import configureStore from 'extensions/redux/store';
 
 import {
   injectAsyncReducer,

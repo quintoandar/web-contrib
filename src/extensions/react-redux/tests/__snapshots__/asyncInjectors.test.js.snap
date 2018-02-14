@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`asyncInjectors helpers injectAsyncFirestoreListener should throw if passed invalid listener - number 1`] = `"(app/utils...) injectFirestoreListener: Expected \`asyncListener\` to be a firestore listener function"`;
+
+exports[`asyncInjectors helpers injectAsyncFirestoreListener should throw if passed invalid listener - string 1`] = `"(app/utils...) injectFirestoreListener: Expected \`asyncListener\` to be a firestore listener function"`;
+
+exports[`asyncInjectors helpers injectAsyncFirestoreListener should throw if passed invalid name - empty 1`] = `"(app/utils...) injectFirestoreListener: Expected \`asyncListener\` to be a firestore listener function"`;
+
+exports[`asyncInjectors helpers injectAsyncFirestoreListener should throw if passed invalid name - number 1`] = `"(app/utils...) injectFirestoreListener: Expected \`asyncListener\` to be a firestore listener function"`;

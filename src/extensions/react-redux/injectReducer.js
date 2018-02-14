@@ -18,7 +18,6 @@ export default (...asyncReducers) => (WrappedComponent) => {
     componentWillMount() {
       /* Inject each of the resolved asyncReducers */
       const { injectReducer } = this.injectors;
-      console.log(injectReducer);
       asyncReducers.forEach(({ key, reducer }) => {
         if (!(key && reducer)) {
           throw new Error('\'key\' or \'reducer\' not defined for withReducer');
