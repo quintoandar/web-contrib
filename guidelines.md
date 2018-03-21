@@ -30,7 +30,9 @@ you would at first see an empty page OR a placeholder, after all your data isn't
 
 5 - The animation disappear and finally your user data is drawn instead.
 
-<img height="450" src="images/redux-pack-flow.jpg">
+<p align="center">
+    <img height="450" src="images/redux-pack-flow.jpg">
+</p>
 
 This is a perfect example of where you should use redux-pack, if you do it from scratch without the aid of any mechanism, steps 2 and 4 would have to be manually dispatched inside the XHR promise flow, add an extra dispatch if you want to handle errors. Redux-pack lets you do all of this within ONE SINGLE redux action dispatch.
 
