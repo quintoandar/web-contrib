@@ -15,4 +15,4 @@ Based on https://github.com/react-boilerplate/react-boilerplate/blob/master/inte
 
 ## General guidelines
 
-Please checkout our PWA general [guidlines](guidelines.md).
+Please checkout our PWA general [guidelines](guidelines.md).
