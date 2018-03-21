@@ -24,11 +24,13 @@ you would at first see an empty page OR a placeholder, after all your data isn't
 
 2 - A XHR Request is made in order to retrieve a json payload with the user data.
 
-4 - The page changes, not it shows a loading animation.
+3 - The page changes, not it shows a loading animation.
 
-5 - The requet gets resolved successfully and your json gets parsed into the store.
+4 - The requet gets resolved successfully and your json gets parsed into the store.
 
-6 - The animation disappear and finally your user data is drawn instead.
+5 - The animation disappear and finally your user data is drawn instead.
+
+<img align="middle" height="200" src="images/redux-pack-flow.png">
 
 This is a perfec example of where you should use redux-pack, if you do it from scratch without the aid of any mechanism, steps 2 and 4 would have to be manually dispatched inside the XHR promise flow, Add an extra dispatch if you want to handle errors. Redux-pack lets you do all of this within ONE SINGLE redux action dispatch.
 
