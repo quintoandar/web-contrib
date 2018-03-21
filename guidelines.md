@@ -21,9 +21,13 @@ In a happy scenario where you did your job right, most of this async actions wou
 
 1 - You enter an user details page, something with your name and other date on it. Assuming that there is no cache and the page isn't served with SSR,
 you would at first see an empty page OR a placeholder, after all your data isn't there yet.
+
 2 - A XHR Request is made in order to retrieve a json payload with the user data.
+
 4 - The page changes, not it shows a loading animation.
+
 5 - The requet gets resolved successfully and your json gets parsed into the store.
+
 6 - The animation disappear and finally your user data is drawn instead.
 
 This is a perfec example of where you should use redux-pack, if you do it from scratch without the aid of any mechanism, steps 2 and 4 would have to be manually dispatched inside the XHR promise flow, Add an extra dispatch if you want to handle errors. Redux-pack lets you do all of this within ONE SINGLE redux action dispatch.
