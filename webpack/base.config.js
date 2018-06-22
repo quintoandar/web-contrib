@@ -25,10 +25,6 @@ const vendorCSSLoaders = extractVendorCSSPlugin.extract({
   allChunks: true,
 });
 
-const excludeFunc = (modulePath) =>
-  /node_modules/.test(modulePath) &&
-  !/node_modules\/(block-party|mission-control|godfather)/.test(modulePath);
-
 const assetsPluginInstance = new AssetsPlugin({
   path: path.join(process.cwd(), 'server', 'middlewares'),
   filename: 'generated.assets.json',
@@ -52,25 +48,25 @@ module.exports = (options) => ({
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: excludeFunc,
+        exclude: options.excludeFunc,
         loader: 'happypack/loader?id=ts',
       },
       {
         test: /\.jsx?$/,
-        exclude: excludeFunc,
+        exclude: options.excludeFunc,
         loader: 'happypack/loader?id=js',
       }, {
         // Preprocess our own .css files
         // This is the place to add your own loaders (e.g. sass/less etc.)
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
-        exclude: excludeFunc,
+        exclude: options.excludeFunc,
         use: ['style-loader', 'css-loader'],
       }, {
         // Extract the dependencies css files to include them
         // through usage of AssetsWebpackPlugin
         test: /\.css$/,
-        include: excludeFunc,
+        include: options.excludeFunc,
         use: vendorCSSLoaders,
       }, {
         test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
@@ -175,7 +171,7 @@ module.exports = (options) => ({
     isBuildingDll ? [] : [assetsPluginInstance]
   ),
   resolve: {
-    modules: ['app', 'node_modules', 'node_modules/block-party'].concat(options.resolve.modules),
+    modules: ['app', 'node_modules'].concat(options.resolve.modules),
     extensions: [
       '.js',
       '.jsx',

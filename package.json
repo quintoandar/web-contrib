@@ -1,6 +1,6 @@
 {
   "name": "web-contrib",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Extensions for dependencies of Web Projects (PWA)",
   "main": "./lib/react-redux/injectReducer.js",
   "jsnext:main": "src/react-redux/injectReducer.js",
@@ -9,7 +9,8 @@
   },
   "files": [
     "src/",
-    "lib/"
+    "lib/",
+    "webpack"
   ],
   "scripts": {
     "prebuild": "npm run build:clean",
