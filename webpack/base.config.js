@@ -133,6 +133,7 @@ module.exports = (options) => ({
       loaders: [
         {
           path: 'babel-loader',
+          options: options.babelOptions,
           query: options.babelQuery,
         },
         {
@@ -147,6 +148,7 @@ module.exports = (options) => ({
       loaders: [
         {
           path: 'babel-loader',
+          options: options.babelOptions,
           query: options.babelQuery,
         },
       ],
