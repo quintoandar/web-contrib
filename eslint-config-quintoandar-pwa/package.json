@@ -1,0 +1,17 @@
+{
+  "name": "eslint-config-quintoandar-pwa",
+  "description": "ESLint Shareable Config for QuintoAndar's PWAs",
+  "version": "1.0.0-alpha.0",
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=5.0.0-alpha.2",
+  },
+  "devDependencies": {
+    "eslint": "^5.0.0-alpha.2",
+    "tape": "^4.8.0"
+  },
+  "scripts": {
+    "lint": "eslint . --config=eslintrc.json",
+    "test": "npm run lint && tape test/*.js"
+  }
+}
