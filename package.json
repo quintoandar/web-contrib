@@ -10,7 +10,8 @@
   "files": [
     "src/",
     "lib/",
-    "webpack"
+    "webpack",
+    "eslint-config-quintoandar-pwa"
   ],
   "scripts": {
     "prebuild": "npm run build:clean",
