@@ -159,14 +159,12 @@ module.exports = (options) => ({
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
 
-    // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
-    // drop any unreachable code.
+    // Instead of creating one property with an object that contains all env vars, we create one key for each variable
+    // so DefinePlugin can replace specifics usages instead inserting the entire process.env object which can cause
+    // changes in one variable affecting chunks that reference any other variable.
     new webpack.DefinePlugin({
-      'process.env': {
-        ...options.env,
-        BUILD: JSON.stringify(getBuild()),
-      },
+      ...Object.assign({}, ...Object.keys(options.env).map((key) => ({ [`process.env.${key}`]: options.env[key] }))),
+      'process.env.BUILD': JSON.stringify(getBuild()),
     }),
     new webpack.NamedModulesPlugin(),
   ]).concat(
