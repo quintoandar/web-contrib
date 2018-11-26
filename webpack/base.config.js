@@ -3,9 +3,7 @@
  */
 
 const path = require('path');
-const { relative } = require('path');
 const hash = require('string-hash');
-const context = __dirname;
 const webpack = require('webpack');
 const HappyPack = require('happypack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -116,7 +114,7 @@ module.exports = (options) => ({
                 plugins: [
                   { removeStyleElement: true },
                   { removeTitle: true },
-                  { cleanupIDs: { minify: true, prefix: `${hash(relative(context, resource))}_` } },
+                  { cleanupIDs: { minify: true, prefix: `${hash(resource)}_` } },
                 ],
               },
             },
