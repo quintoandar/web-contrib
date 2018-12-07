@@ -35,6 +35,21 @@ const assetsPluginInstance = new AssetsPlugin({
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
 
+/**
+ * @param {Object} options a set of options to customize the Webpack configuration
+ * @param {string|Object|Function} options.entry Webpack entry configuration
+ * @param {string} options.context Webpack context configuration
+ * @param {Object} options.output Webpack output configuration
+ * @param {Function} options.excludeFunc a condition to exclude files from module rules
+ * @param {array} options.plugins Webpack plugins configuration
+ * @param {Object} options.babelOptions babel-loader options
+ * @param {Object} options.babelQuery babel-loader query
+ * @param {array} options.env process.env key values
+ * @param {array} options.resolve.modules Webpack resolve.modules configuration
+ * @param {Object} options.resolve.alias Webpack resolve.alias configuration
+ * @param {string|false} options.devtool Webpack devtool configuration
+ * @param {Object} options.performance Webpack performance configuration
+ */
 module.exports = (options) => ({
   entry: options.entry,
   context: options.context,
