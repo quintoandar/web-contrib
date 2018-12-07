@@ -37,6 +37,7 @@ process.noDeprecation = true;
 
 module.exports = (options) => ({
   entry: options.entry,
+  context: options.context,
   output: Object.assign({ // Compile into js/build.js
     path: path.resolve(process.cwd(), 'build'),
     publicPath: '/',
@@ -114,7 +115,12 @@ module.exports = (options) => ({
                 plugins: [
                   { removeStyleElement: true },
                   { removeTitle: true },
-                  { cleanupIDs: { minify: true, prefix: `${hash(resource)}_` } },
+                  {
+                    cleanupIDs: {
+                      minify: true,
+                      prefix: `${hash(path.relative(options.context || process.cwd(), resource))}_`,
+                    },
+                  },
                 ],
               },
             },
