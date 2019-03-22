@@ -1,6 +1,6 @@
 {
   "name": "web-contrib",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Extensions for dependencies of Web Projects (PWA)",
   "main": "./lib/extensions/react-redux/injectReducer.js",
   "jsnext:main": "src/extensions/react-redux/injectReducer.js",
