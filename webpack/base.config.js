@@ -143,7 +143,7 @@ module.exports = (options) => {
         },
         {
           test: /\.svg$/,
-          exclude: /node_modules\/(?!block-party|godfather|mission-control)/,
+          exclude: /node_modules\/(?!block-party|godfather|mission-control|docx)/,
           include: /inline/,
           loaders: [
             'babel-loader',
