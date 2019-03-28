@@ -1,24 +1,24 @@
 pipeline:
   install:
-    image:   node:8.9.4
+    image:   node:10.15.0
     commands:
       - git config --global url."https://".insteadOf ssh://git@
       - npm install --unsafe-perm --quiet
 
   test:
     group: build
-    image: node:8.9.4
+    image: node:10.15.0
     commands:
       - npm run test --unsafe-perm --quiet
 
   lint:
     group: build
-    image: node:8.9.4
+    image: node:10.15.0
     commands:
       - npm run lint --unsafe-perm --quiet
 
   build:
     group: build
-    image: node:8.9.4
+    image: node:10.15.0
     commands:
       - npm run build
