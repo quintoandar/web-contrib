@@ -185,6 +185,7 @@ module.exports = (options) => {
             query: { happyPackMode: true },
           },
         ],
+        verbose: false,
       }),
       new HappyPack({
         id: 'js',
@@ -196,6 +197,7 @@ module.exports = (options) => {
             query: options.babelQuery,
           },
         ],
+        verbose: false,
       }),
 
       new webpack.ProvidePlugin({
