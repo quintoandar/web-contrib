@@ -229,7 +229,7 @@ module.exports = (options) => {
         'browser',
         'main',
       ],
-      alias: options.alias,
+      alias: options.resolve.alias,
     },
     devtool: options.devtool,
     target: 'web', // Make web variables accessible to webpack, e.g. window
