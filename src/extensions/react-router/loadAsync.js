@@ -14,7 +14,7 @@ export const loadModule = (cb) => (componentModule) => {
 
 export default (errorHandler) => (importedComponent, cb) => {
   const renderRoute = loadModule(cb);
-  Promise.all([importedComponent])
+  return Promise.all([importedComponent])
     .then(([component]) => {
       renderRoute(component);
     })
