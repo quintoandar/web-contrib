@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import produce from 'immer';
 import { memoryHistory } from 'react-router';
 import configureStore from 'extensions/redux/store';
 
@@ -10,16 +10,17 @@ import {
 
 // Fixtures
 
-const initialState = fromJS({ reduced: 'soon' });
+const initialState = { reduced: 'soon' };
 
-const reducer = (state = initialState, action) => {
+const reducer = produce((state, action) => {
   switch (action.type) {
     case 'TEST':
-      return state.set('reduced', action.payload);
+      state.reduced = action.payload;
+      return state;
     default:
       return state;
   }
-};
+}, initialState);
 
 const firestoreListener = (dispatch) => {
   dispatch({
@@ -42,10 +43,10 @@ describe('asyncInjectors', () => {
       injectReducer('test', reducer);
       store.dispatch({ type: 'TEST', payload: 'yup' });
 
-      const actual = store.getState().get('test');
-      const expected = initialState.merge({ reduced: 'yup' });
+      const actual = store.getState().test;
+      const expected = { ...initialState, reduced: 'yup' };
 
-      expect(actual.toJS()).toEqual(expected.toJS());
+      expect(actual).toEqual(expected);
     });
 
     it('should throw if passed invalid store shape', () => {
@@ -74,10 +75,10 @@ describe('asyncInjectors', () => {
 
         injectReducer('test', reducer);
 
-        const actual = store.getState().get('test');
+        const actual = store.getState().test;
         const expected = initialState;
 
-        expect(actual.toJS()).toEqual(expected.toJS());
+        expect(actual).toEqual(expected);
       });
 
       it('should not assign reducer if already existing', () => {
