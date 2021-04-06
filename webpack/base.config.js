@@ -91,7 +91,7 @@ module.exports = (options) => {
           loader: 'happypack/loader?id=ts',
         },
         {
-          test: /\.jsx?$/,
+          test: /\.m?c?jsx?$/,
           exclude: options.excludeFunc,
           loader: 'happypack/loader?id=js',
         }, {
